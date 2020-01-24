@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Todos from './Todos/Todos'
+// eslint-disable-next-line
+import { firebaseConfig } from './Config/config'
+// eslint-disable-next-line
+import firebase from 'firebase/app'
+import 'firebase/database'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: []
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">        
+          <h1>ToDo</h1>
+          <Todos />
+        </header>
+      </div>
+    );
+    }
+  }
 
 export default App;
