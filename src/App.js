@@ -21,9 +21,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">        
-          <h1>ToDo</h1>          
+      <div className="todoWrapper">
+        <header className="todoHeader">        
+          <h1>Todos</h1>          
         </header>
         <Todos />
         <TodosForm />

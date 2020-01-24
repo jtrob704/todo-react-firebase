@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import './TodosForm.css'
 
-export class Todos extends Component {
+export class TodosForm extends Component {
     render() {
         return (
             <div id="todo-form">
@@ -11,4 +12,4 @@ export class Todos extends Component {
     }
 }
 
-export default Todos
+export default TodosForm
