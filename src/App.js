@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Todos from './Todos/Todos'
+import TodosForm from './TodosForm/TodosForm'
 // eslint-disable-next-line
 import { firebaseConfig } from './Config/config'
 // eslint-disable-next-line
@@ -22,9 +23,10 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">        
-          <h1>ToDo</h1>
-          <Todos />
+          <h1>ToDo</h1>          
         </header>
+        <Todos />
+        <TodosForm />
       </div>
     );
     }
