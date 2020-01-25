@@ -15,7 +15,10 @@ class App extends Component {
     super(props);
 
     this.state = {
-      todos: []
+      todos: [
+        {todoId:0, todoContent:'Test todo 1'},
+        {todoId:1, todoContent:'Test todo 2'}
+      ]
     }
   }
 
@@ -25,8 +28,16 @@ class App extends Component {
         <header className="todoHeader">        
           <h1>Todos</h1>          
         </header>
-        <Todos />
-        <TodosForm />
+        <div className="todosBody">
+          {this.state.todos.map((todo) => {
+            return (
+              <Todos todoId={todo.todoId}
+              todoContent={todo.todoContent}
+              key={todo.todoId}/>
+            )
+          })}          
+          <TodosForm />
+        </div>
       </div>
     );
     }
