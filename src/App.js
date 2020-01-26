@@ -13,6 +13,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    this.addTodo = this.addTodo.bind(this);
 
     this.state = {
       todos: [
@@ -20,6 +21,16 @@ class App extends Component {
         {todoId:1, todoContent:'Test todo 2'}
       ]
     }
+  }
+
+  addTodo(todo) {
+    let prevTodos = this.state.todos;
+
+    prevTodos.push({todoId: prevTodos.length + 1, todoContent: todo})
+
+    this.setState({
+      todos: prevTodos
+    })
   }
 
   render() {
@@ -36,7 +47,7 @@ class App extends Component {
               key={todo.todoId}/>
             )
           })}          
-          <TodosForm />
+          <TodosForm addTodo={this.addTodo}/>
         </div>
       </div>
     );
