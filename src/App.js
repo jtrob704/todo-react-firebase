@@ -16,10 +16,7 @@ class App extends Component {
     this.addTodo = this.addTodo.bind(this);
 
     this.state = {
-      todos: [
-        {todoId:0, todoContent:'Test todo 1'},
-        {todoId:1, todoContent:'Test todo 2'}
-      ]
+      todos: []
     }
   }
 
