@@ -29,10 +29,10 @@ export class TodosForm extends Component {
 
     render() {
         return (
-            <div id="todo-form">
+            <div className="todoForm">
                 <input type="text" 
                 className="inputTodo"
-                placeholder="Enter new Todo"
+                placeholder="Enter new Todo..."
                 value={this.state.newTodo}
                 onChange={this.handleFormInput} />
                 <button onClick={this.createTodo}>New Todo</button>

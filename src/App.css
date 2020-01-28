@@ -1,7 +1,22 @@
 * {
-    text-align: center;
+    background-color: lightgray;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 0;
+    border: 1px solid red;
 }
+
+.todoHeader {
+    font-family: 'Indie Flower', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.todoWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .todosBody {
+    justify-content: space-around;
+} */

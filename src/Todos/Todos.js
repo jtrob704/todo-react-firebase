@@ -12,7 +12,7 @@ export class Todos extends Component {
 
     render() {
         return (
-            <div id="todos-list">
+            <div className="todosList">
                 <p className="todoContent">{this.todoContent}</p>
             </div>
         )
