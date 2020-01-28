@@ -8,6 +8,7 @@ import firebase from 'firebase/app'
 import 'firebase/database'
 import './App.css';
 
+const moment = require('moment');
 
 class App extends Component {
 
@@ -22,8 +23,9 @@ class App extends Component {
 
   addTodo(todo) {
     let prevTodos = this.state.todos;
+    let timestamp = moment().format('MMMM Do YYYY, h:mm:ss a');
 
-    prevTodos.push({todoId: prevTodos.length + 1, todoContent: todo})
+    prevTodos.push({todoId: prevTodos.length + 1, todoContent: todo, timestamp: timestamp})
 
     this.setState({
       todos: prevTodos
@@ -41,6 +43,7 @@ class App extends Component {
             return (
               <Todos todoId={todo.todoId}
               todoContent={todo.todoContent}
+              timestamp={todo.timestamp}
               key={todo.todoId}/>
             )
           })}          
