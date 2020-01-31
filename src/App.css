@@ -17,6 +17,7 @@
     flex-direction: column;
 }
 
-/* .todosBody {
-    justify-content: space-around;
-} */
+.todosBody {
+    margin-bottom: 2rem;
+    overflow: auto;
+}

@@ -5,7 +5,7 @@
     width: 60%;
     height: 5rem;
     margin-top: 2rem;
-    margin-bottom: 2rem;  
+    margin-bottom: 4rem;  
     background-color: rgb(255,255,191);  
 }
 
@@ -15,9 +15,30 @@
     overflow: auto;
     overflow-wrap: break-word;
     background-color: rgb(255,255,191);
-    padding-top: 1.2rem;
+    padding-top: 0.5rem;
 }
 
 .dateTime {
     font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    text-align: left;
+    font-size: initial;
+    width: 100%;
+    padding-top: 0.3rem;
+}
+
+.actionBar {
+    display: flex;
+}
+
+.removeBtn {
+    color: red;
+    background-color: #fff;
+    font-size: 1.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.removeBtn:hover {
+    cursor: pointer;
 }

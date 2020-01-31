@@ -14,7 +14,10 @@ export class Todos extends Component {
     render() {
         return (
             <div className="todosList">
-                <p className="dateTime">{this.timestamp}</p>
+                <div className="actionBar">
+                    <div className="dateTime">{this.timestamp}</div>      
+                    <span className="removeBtn">X</span>          
+                </div>
                 <p className="todoContent">{this.todoContent}</p>
             </div>
         )

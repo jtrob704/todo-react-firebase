@@ -23,7 +23,7 @@ class App extends Component {
 
   addTodo(todo) {
     let prevTodos = this.state.todos;
-    let timestamp = moment().format('MMMM Do YYYY, h:mm:ss a');
+    let timestamp = moment().format('dddd - MMMM Do YYYY, h:mm:ss a');
 
     prevTodos.push({todoId: prevTodos.length + 1, todoContent: todo, timestamp: timestamp})
 
