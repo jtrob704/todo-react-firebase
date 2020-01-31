@@ -11,12 +11,16 @@ export class Todos extends Component {
         this.timestamp = props.timestamp;
     }
 
+    removeTodo(id) {
+        this.props.deleteTodo(id)
+    }
+
     render() {
         return (
             <div className="todosList">
                 <div className="actionBar">
                     <div className="dateTime">{this.timestamp}</div>      
-                    <span className="removeBtn">X</span>          
+                    <span className="removeBtn" onClick={() => this.removeTodo(this.todoId)}>X</span>          
                 </div>
                 <p className="todoContent">{this.todoContent}</p>
             </div>

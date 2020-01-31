@@ -15,6 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.addTodo = this.addTodo.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
 
     this.state = {
       todos: []
@@ -22,13 +23,24 @@ class App extends Component {
   }
 
   addTodo(todo) {
-    let prevTodos = this.state.todos;
-    let timestamp = moment().format('dddd - MMMM Do YYYY, h:mm:ss a');
+    const prevTodos = this.state.todos;
+    const timestamp = moment().format('dddd - MMMM Do YYYY, h:mm:ss a');
+    const debugDate = new Date();
+    const debugMs = debugDate.getTime();
 
-    prevTodos.push({todoId: prevTodos.length + 1, todoContent: todo, timestamp: timestamp})
+    prevTodos.push({todoId: debugMs, todoContent: todo, timestamp: timestamp})
 
     this.setState({
       todos: prevTodos
+    })
+  }
+
+  deleteTodo(id) {
+    
+    const remainingTodos = this.state.todos.filter((todo) => todo.todoId !== id);
+
+    this.setState({
+      todos: remainingTodos
     })
   }
 
@@ -44,7 +56,8 @@ class App extends Component {
               <Todos todoId={todo.todoId}
               todoContent={todo.todoContent}
               timestamp={todo.timestamp}
-              key={todo.todoId}/>
+              key={todo.todoId}
+              deleteTodo={this.deleteTodo}/>
             )
           })}          
           <TodosForm addTodo={this.addTodo}/>
