@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Todos from './Todos/Todos'
 import TodosForm from './TodosForm/TodosForm'
-// eslint-disable-next-line
 import { firebaseConfig } from './Config/config'
-// eslint-disable-next-line
 import firebase from 'firebase/app'
 import 'firebase/database'
 import './App.css';
@@ -17,31 +15,49 @@ class App extends Component {
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
 
+    this.app = firebase.initializeApp(firebaseConfig);
+    this.database = this.app.database().ref().child('todos');
+
     this.state = {
       todos: []
     }
   }
 
-  addTodo(todo) {
-    const prevTodos = this.state.todos;
-    const timestamp = moment().format('dddd - MMMM Do YYYY, h:mm:ss a');
-    const debugDate = new Date();
-    const debugMs = debugDate.getTime();
+  componentDidMount(){
+    const previousTodos = this.state.todos;
 
-    prevTodos.push({todoId: debugMs, todoContent: todo, timestamp: timestamp})
+    this.database.on('child_added', snap => {
+      previousTodos.push({
+        id: snap.key,
+        todoContent: snap.val().todoContent,
+        timestamp: snap.val().timestamp
+      })
 
-    this.setState({
-      todos: prevTodos
+      this.setState({
+        todos: previousTodos
+      })
+    })
+
+    this.database.on('child_removed', snap => {
+      for(var i=0; i < previousTodos.length; i++){
+        if(previousTodos[i].id === snap.key){
+          previousTodos.splice(i, 1);
+        }
+      }
+
+      this.setState({
+        todos: previousTodos
+      })
     })
   }
 
-  deleteTodo(id) {
-    
-    const remainingTodos = this.state.todos.filter((todo) => todo.todoId !== id);
+  addTodo(todo) {    
+    const timestamp = moment().format('dddd - MMMM Do YYYY, h:mm:ss a');    
+    this.database.push().set({todoContent: todo, timestamp: timestamp});
+  }
 
-    this.setState({
-      todos: remainingTodos
-    })
+  deleteTodo(id) {
+    this.database.child(id).remove();
   }
 
   render() {
@@ -53,10 +69,10 @@ class App extends Component {
         <div className="todosBody">
           {this.state.todos.map((todo) => {
             return (
-              <Todos todoId={todo.todoId}
-              todoContent={todo.todoContent}
+              <Todos todoContent={todo.todoContent}
+              todoId={todo.id}
+              key={todo.id}
               timestamp={todo.timestamp}
-              key={todo.todoId}
               deleteTodo={this.deleteTodo}/>
             )
           })}          

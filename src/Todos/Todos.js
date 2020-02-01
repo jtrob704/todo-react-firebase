@@ -31,7 +31,7 @@ export class Todos extends Component {
 }
 
 Todos.propTypes = {
-    todoId: PropTypes.number,
+    todoId: PropTypes.string,
     todoContent: PropTypes.string,
     timestamp: PropTypes.string
 };

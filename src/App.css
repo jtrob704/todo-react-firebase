@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
     border: 0;
-    /* border: 1px solid red; */
 }
 
 .todoHeader {
@@ -18,11 +17,11 @@
 
 .todoWrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
-.todosBody {
+.todosBody {    
     margin-top: 5rem;
     margin-bottom: 2rem;
-    overflow: auto;
+    overflow: auto;    
 }
