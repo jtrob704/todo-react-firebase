@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './Todos.css'
+import PropTypes from 'prop-types';
+
 
 export class Todos extends Component {
 
@@ -27,5 +29,11 @@ export class Todos extends Component {
         )
     }
 }
+
+Todos.propTypes = {
+    todoId: PropTypes.number,
+    todoContent: PropTypes.string,
+    timestamp: PropTypes.string
+};
 
 export default Todos
